@@ -1,37 +1,34 @@
-const { Book } = require("../models");
+const { category } = require("../models");
 
-
-//  Create book
-
-const createBook = async (reqBody) => {
-  return Book.create(reqBody);
+const createcategory = async (reqBody) => {
+    return category.create(reqBody);
 };
 
-const getBookList = async (filter, options) => {
-  return Book.find()
+const getcategoryByName = async (category_name) => {
+    return category.findOne({ category_name });
 };
 
-const getBookById = async(bookId) => {
-  return Book.findById(bookId);
-}
+const getcategoryList = async (filter, options) => {
+    return category.find();
+};
 
-const updateDetails = async(bookId, updateBody) => {
-  return Book.findByIdAndUpdate(bookId, { $set: updateBody });
-}
+const deletecategory = async (categoryId) => {
+    return category.findByIdAndDelete(categoryId);
+};
 
-const deleteBook = async (bookId) => {
-  return Book.findByIdAndDelete(bookId);
-}
+const getcategoryById = async (categoryId) => {
+    return category.findById(categoryId);
+};
 
-const getBookByName = async (book_name) => {
-  return Book.findOne({ book_name })
+const updateDetails = async () => {
+    return category.findByIdAndUpdate();
 };
 
 module.exports = {
-  createBook,
-  getBookList,
-  getBookById,
-  updateDetails,
-  deleteBook,
-  getBookByName
+    createcategory,
+    getcategoryByName,
+    getcategoryList,
+    deletecategory,
+    getcategoryById,
+    updateDetails
 };

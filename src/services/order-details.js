@@ -1,37 +1,34 @@
 const { orderdetails } = require("../models");
 
-
-//  Create orderdetails
-
 const createorderdetails = async (reqBody) => {
-  return orderdetails.create(reqBody);
+    return orderdetails.create(reqBody);
+};
+
+const getorderdetailsByName = async (orderdetails_name) => {
+    return orderdetails.findOne({ orderdetails_name });
 };
 
 const getorderdetailsList = async (filter, options) => {
-  return orderdetails.find()
+    return orderdetails.find();
 };
 
-const getorderdetailsById = async(orderdetailsId) => {
-  return orderdetails.findById(orderdetailsId);
-}
-
-const updateDetails = async(orderdetailsId, updateBody) => {
-  return orderdetails.findByIdAndUpdate(orderdetailsId, { $set: updateBody });
-}
-
 const deleteorderdetails = async (orderdetailsId) => {
-  return orderdetails.findByIdAndDelete(orderdetailsId);
-}
+    return orderdetails.findByIdAndDelete(orderdetailsId);
+};
 
-const getorderdetailsByName = async (orderdetails_name) => {
-  return orderdetails.findOne({ orderdetails_name })
+const getorderdetailsById = async (orderdetailsId) => {
+    return orderdetails.findById(orderdetailsId);
+};
+
+const updateDetails = async () => {
+    return orderdetails.findByIdAndUpdate();
 };
 
 module.exports = {
-  createorderdetails,
-  getorderdetailsList,
-  getorderdetailsById,
-  updateDetails,
-  deleteorderdetails,
-  getorderdetailsByName
+    createorderdetails,
+    getorderdetailsByName,
+    getorderdetailsList,
+    deleteorderdetails,
+    getorderdetailsById,
+    updateDetails
 };

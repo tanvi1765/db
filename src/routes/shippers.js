@@ -1,7 +1,7 @@
 const express = require("express");
-const { shippersValidation } = require("../../validations");
-const { shippersController } = require("../../controllers");
-const validate = require("../../middlewares/validate");
+const { shippersValidation } = require("../validation");
+const { shippersController } = require("../controller");
+const validate = require("../middlewares/validate");
 
 const router = express.Router();
 
@@ -9,15 +9,14 @@ const router = express.Router();
 router.post(
   "/create-shippers",
   validate(shippersValidation.createshippers),
-  shippersController.createshippersRecord
+  shippersController.createshippers
 );
 
 // Get shippers list
 router.get(
   "/list",
-  shippersController.getshipperssList
+  shippersController.getshippersList
 );
-
 // get shippers details by id
 router.get(
   "/get-details/:shippersId",
@@ -26,13 +25,13 @@ router.get(
 
 // update shippers
 router.put(
-  "/update-shippers/:shippersId",
+  "/update/:shippersId",
   shippersController.updateshippers
 )
 
 // delete shippers
 router.delete(
-  "/delete-shippers/:shippersId",
+  "/delete/:shippersId",
   shippersController.deleteRecord
 )
 

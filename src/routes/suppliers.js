@@ -1,7 +1,7 @@
 const express = require("express");
-const { suppliersValidation } = require("../../validations");
-const { suppliersController } = require("../../controllers");
-const validate = require("../../middlewares/validate");
+const { suppliersValidation } = require("../validation");
+const { suppliersController } = require("../controller");
+const validate = require("../middlewares/validate");
 
 const router = express.Router();
 
@@ -9,15 +9,14 @@ const router = express.Router();
 router.post(
   "/create-suppliers",
   validate(suppliersValidation.createsuppliers),
-  suppliersController.createsuppliersRecord
+  suppliersController.createsuppliers
 );
 
 // Get suppliers list
 router.get(
   "/list",
-  suppliersController.getsupplierssList
+  suppliersController.getsuppliersList
 );
-
 // get suppliers details by id
 router.get(
   "/get-details/:suppliersId",
@@ -26,13 +25,13 @@ router.get(
 
 // update suppliers
 router.put(
-  "/update-suppliers/:suppliersId",
+  "/update/:suppliersId",
   suppliersController.updatesuppliers
 )
 
 // delete suppliers
 router.delete(
-  "/delete-suppliers/:suppliersId",
+  "/delete/:suppliersId",
   suppliersController.deleteRecord
 )
 

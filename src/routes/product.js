@@ -1,7 +1,7 @@
 const express = require("express");
-const { productValidation } = require("../../validations");
-const { productController } = require("../../controllers");
-const validate = require("../../middlewares/validate");
+const { productValidation } = require("../validation");
+const { productController } = require("../controller");
+const validate = require("../middlewares/validate");
 
 const router = express.Router();
 
@@ -9,15 +9,14 @@ const router = express.Router();
 router.post(
   "/create-product",
   validate(productValidation.createproduct),
-  productController.createproductRecord
+  productController.createproduct
 );
 
 // Get product list
 router.get(
   "/list",
-  productController.getproductsList
+  productController.getproductList
 );
-
 // get product details by id
 router.get(
   "/get-details/:productId",
@@ -26,13 +25,13 @@ router.get(
 
 // update product
 router.put(
-  "/update-product/:productId",
+  "/update/:productId",
   productController.updateproduct
 )
 
 // delete product
 router.delete(
-  "/delete-product/:productId",
+  "/delete/:productId",
   productController.deleteRecord
 )
 

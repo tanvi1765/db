@@ -6,7 +6,7 @@ const customerSchema = new mongoose.Schema(
             type: String,
             trim: true,
         },
-        last_desc: {
+        last_name: {
             type: String,
             trim: true,
         },

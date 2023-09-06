@@ -1,37 +1,34 @@
 const { order } = require("../models");
 
-
-//  Create order
-
 const createorder = async (reqBody) => {
-  return order.create(reqBody);
+    return order.create(reqBody);
+};
+
+const getorderByName = async (order_name) => {
+    return order.findOne({ order_name });
 };
 
 const getorderList = async (filter, options) => {
-  return order.find()
+    return order.find();
 };
 
-const getorderById = async(orderId) => {
-  return order.findById(orderId);
-}
-
-const updateDetails = async(orderId, updateBody) => {
-  return order.findByIdAndUpdate(orderId, { $set: updateBody });
-}
-
 const deleteorder = async (orderId) => {
-  return order.findByIdAndDelete(orderId);
-}
+    return order.findByIdAndDelete(orderId);
+};
 
-const getorderByName = async (order_name) => {
-  return order.findOne({ order_name })
+const getorderById = async (orderId) => {
+    return order.findById(orderId);
+};
+
+const updateDetails = async () => {
+    return order.findByIdAndUpdate();
 };
 
 module.exports = {
-  createorder,
-  getorderList,
-  getorderById,
-  updateDetails,
-  deleteorder,
-  getorderByName
+    createorder,
+    getorderByName,
+    getorderList,
+    deleteorder,
+    getorderById,
+    updateDetails
 };

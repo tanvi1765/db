@@ -1,37 +1,34 @@
-const { shippers } = require("../models");
-
-
-//  Create shippers
+const { shippers } =require("../models");
 
 const createshippers = async (reqBody) => {
-  return shippers.create(reqBody);
+    return shippers.create(reqBody);
+};
+
+const getshippersByName = async (shippers_name) => {
+    return shippers.findOne({ shippers_name });
 };
 
 const getshippersList = async (filter, options) => {
-  return shippers.find()
+    return shippers.find();
 };
 
-const getshippersById = async(shippersId) => {
-  return shippers.findById(shippersId);
-}
-
-const updateDetails = async(shippersId, updateBody) => {
-  return shippers.findByIdAndUpdate(shippersId, { $set: updateBody });
-}
-
 const deleteshippers = async (shippersId) => {
-  return shippers.findByIdAndDelete(shippersId);
-}
+    return shippers.findByIdAndDelete(shippersId);
+};
 
-const getshippersByName = async (shippers_name) => {
-  return shippers.findOne({ shippers_name })
+const getshippersById = async (shippersId) => {
+    return shippers.findById(shippersId);
+};
+
+const updateDetails = async () => {
+    return shippers.findByIdAndUpdate();
 };
 
 module.exports = {
-  createshippers,
-  getshippersList,
-  getshippersById,
-  updateDetails,
-  deleteshippers,
-  getshippersByName
+    createshippers,
+    getshippersByName,
+    getshippersList,
+    deleteshippers,
+    getshippersById,
+    updateDetails
 };

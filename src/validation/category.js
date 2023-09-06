@@ -3,12 +3,8 @@ const Joi = require("joi");
 // create category
 const createcategory = {
     body: Joi.object().keys({
-        hotal_branch: Joi.number().integer(),
-        hotal_name: Joi.string().required().trim(),
-        hotal_location: Joi.string().required().trim(),
-        contact_number: Joi.number().integer(),
-        room_no: Joi.number().integer(),
-        room_type: Joi.string().required().trim(),
+      category_name:Joi.string().required().trim(),
+      category_desc: Joi.string().required().trim(),
     }),
 };
 /** GEt category list */
@@ -34,6 +30,3 @@ module.exports = {
   getcategoryList,
 };
 
-module.exports = {
-    createHotal
-};

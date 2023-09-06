@@ -1,7 +1,7 @@
 const express = require("express");
-const { orderdetailsValidation } = require("../../validations");
-const { orderdetailsController } = require("../../controllers");
-const validate = require("../../middlewares/validate");
+const { orderdetailsValidation } = require("../validation");
+const { orderdetailsController } = require("../controller");
+const validate = require("../middlewares/validate");
 
 const router = express.Router();
 
@@ -9,15 +9,14 @@ const router = express.Router();
 router.post(
   "/create-orderdetails",
   validate(orderdetailsValidation.createorderdetails),
-  orderdetailsController.createorderdetailsRecord
+  orderdetailsController.createorderdetails
 );
 
 // Get orderdetails list
 router.get(
   "/list",
-  orderdetailsController.getorderdetailssList
+  orderdetailsController.getorderdetailsList
 );
-
 // get orderdetails details by id
 router.get(
   "/get-details/:orderdetailsId",
@@ -26,13 +25,13 @@ router.get(
 
 // update orderdetails
 router.put(
-  "/update-orderdetails/:orderdetailsId",
+  "/update/:orderdetailsId",
   orderdetailsController.updateorderdetails
 )
 
 // delete orderdetails
 router.delete(
-  "/delete-orderdetails/:orderdetailsId",
+  "/delete/:orderdetailsId",
   orderdetailsController.deleteRecord
 )
 

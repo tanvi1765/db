@@ -1,8 +1,8 @@
 const express = require("express");
 const http = require("http");
 const bodyParser  = require("body-parser");
-const { connectDB } = require("./db/dbconnection");
-const routes = require("./routes/v1")
+const { connectDB } = require("./db/dcconnection");
+const routes = require("./routes")
 const config = require("./config/config")
 
 const app = express();
@@ -19,5 +19,5 @@ connectDB()
 const server = http.createServer(app);
 
 server.listen(config.port,() =>{
-    console.log("server listning port number 3000");
+    console.log("connect server...");
 });

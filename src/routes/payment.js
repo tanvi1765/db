@@ -1,7 +1,7 @@
 const express = require("express");
-const { paymentValidation } = require("../../validations");
-const { paymentController } = require("../../controllers");
-const validate = require("../../middlewares/validate");
+const { paymentValidation } = require("../validation");
+const { paymentController } = require("../controller");
+const validate = require("../middlewares/validate");
 
 const router = express.Router();
 
@@ -9,15 +9,14 @@ const router = express.Router();
 router.post(
   "/create-payment",
   validate(paymentValidation.createpayment),
-  paymentController.createpaymentRecord
+  paymentController.createpayment
 );
 
 // Get payment list
 router.get(
   "/list",
-  paymentController.getpaymentsList
+  paymentController.getpaymentList
 );
-
 // get payment details by id
 router.get(
   "/get-details/:paymentId",
@@ -26,13 +25,13 @@ router.get(
 
 // update payment
 router.put(
-  "/update-payment/:paymentId",
+  "/update/:paymentId",
   paymentController.updatepayment
 )
 
 // delete payment
 router.delete(
-  "/delete-payment/:paymentId",
+  "/delete/:paymentId",
   paymentController.deleteRecord
 )
 

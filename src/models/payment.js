@@ -13,6 +13,10 @@ const paymentSchema = new mongoose.Schema(
         allowed: {
             type: Boolean,
             default: true,
+        },
+        is_active: {
+            type: Boolean,
+            default: true,
         }
     },
     {

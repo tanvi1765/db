@@ -1,39 +1,34 @@
-
-
-const { customer } = require("../models");
-
-
-//  Create customer
+const { customer } =  require("../models");
 
 const createcustomer = async (reqBody) => {
-  return customer.create(reqBody);
+    return customer.create(reqBody);
+};
+
+const getcustomerByName = async (customer_name) => {
+    return customer.findOne({ customer_name });
 };
 
 const getcustomerList = async (filter, options) => {
-  return customer.find()
+    return customer.find();
 };
 
-const getcustomerById = async(customerId) => {
-  return customer.findById(customerId);
-}
-
-const updateDetails = async(customerId, updateBody) => {
-  return customer.findByIdAndUpdate(customerId, { $set: updateBody });
-}
-
 const deletecustomer = async (customerId) => {
-  return customer.findByIdAndDelete(customerId);
-}
+    return customer.findByIdAndDelete(customerId);
+};
 
-const getcustomerByName = async (customer_name) => {
-  return customer.findOne({ customer_name })
+const getcustomerById = async (customerId) => {
+    return customer.findById(customerId);
+};
+
+const updateDetails = async () => {
+    return customer.findByIdAndUpdate();
 };
 
 module.exports = {
-  createcustomer,
-  getcustomerList,
-  getcustomerById,
-  updateDetails,
-  deletecustomer,
-  getcustomerByName
+    createcustomer,
+    getcustomerByName,
+    getcustomerList,
+    deletecustomer,
+    getcustomerById,
+    updateDetails
 };
